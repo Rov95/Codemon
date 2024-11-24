@@ -1,3 +1,7 @@
 #node modules
 
 node_modules
+
+#DB credentials
+
+config.json

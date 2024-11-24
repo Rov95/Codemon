@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "target": "ES6",                    
+        "module": "CommonJS",               
+        "strict": true,                     
+        "esModuleInterop": true,            
+        "forceConsistentCasingInFileNames": true, 
+        "outDir": "./dist",                 
+        "rootDir": "./../server",                 
+        "resolveJsonModule": true,          
+        "skipLibCheck": true                
+    },
+    "include": [
+        "../server/**/*",
+        "../types.d.ts"
+    ],              
+    "exclude": ["node_modules", "dist"]   
+}
+
