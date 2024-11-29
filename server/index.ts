@@ -12,8 +12,8 @@ app.use(
         // when conecting to the front this is probably the 
         // config to use so I will leave it her for latter
         
-        // origin: 'http://localhost:5173',
-        // credentials: true,
+        origin: 'http://localhost:5173',
+        credentials: true,
     })
 );
 

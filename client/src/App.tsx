@@ -28,7 +28,6 @@ const App: React.FC = () => {
           path="/dashboard"
           element={
             <PrivateRoute>
-              {/* <h1>You are logged in!</h1> */}
               <MainMenu />
             </PrivateRoute>
           }

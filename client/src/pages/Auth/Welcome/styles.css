@@ -1,0 +1,27 @@
+.welcome-page {
+    background: url('../../../assets/LogIn.svg') no-repeat center center fixed;
+    background-size: cover; 
+    min-height: 100vh; /* Ensure it spans the entire viewport height */
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #d1d8e0; 
+}
+
+.welcome-title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #360303;
+}
+
+.signup-prompt {
+    color: #d1d8e0;
+    margin-top: 1rem;
+}
+
+.sign-up-option {
+    color: #45aaf2;
+    cursor: pointer;
+    font-weight: bold;
+}

@@ -17,7 +17,7 @@ const Welcome: React.FC<WelcomeProps> = ({ setIsSignedIn }) => {
     return (
         <div className='welcome-page'>
         <h1 className="welcome-title">
-            Welcome to Codemon!
+            Codemon
         </h1>
         {showSignUp ? (
             <SignUp toggleSignUp={toggleSignUp} />

@@ -1,53 +1,46 @@
-import { useState } from 'react'
-import './MainMenu.css'
+import { useState } from 'react';
+import './MainMenu.css';
+import { Option } from '../../interfaces/Option';
 
-
-interface Option {
-  title: string,
-  description: string,
-}
-
-const menuOptions : Option[] = [
+const menuOptions: Option[] = [
   {
-    title: 'Battle',
-    description: 'Go to battle'
+    title: 'Battle Arena',
+    description: 'Engage in thrilling combat and prove your strength!',
   },
   {
-    title: 'Characters',
-    description: 'Choose your character'
+    title: 'Training Grounds',
+    description: 'Hone your skills and master your techniques here.',
   },
   {
-    title: 'Practice',
-    description: 'Practice with your character'
-  }
-]
+    title: 'Heroes Gallery',
+    description: 'Browse and select your legendary heroes for the battle.',
+  },
+  {
+    title: 'Game Settings',
+    description: 'Personalize your gaming experience just the way you like.',
+  },
+];
 
 const MainMenu = () => {
-
-  const [propDescription, setPropDescription] = useState('Description here');
+  const [propDescription, setPropDescription] = useState('Hover over an option to see details.');
 
   return (
-    <>
-      <div id="main-container">
-        <div className='list-container'>
-            {
-              menuOptions.map(option => (
-                <div className='menu-item' key={option.title} onMouseEnter={() => setPropDescription(option.description)}
-                onMouseLeave={() => setPropDescription("Hover an option")}>
-                  <p>{option.title}</p>
-                </div>
-              ))
-            }
-        </div>
-        <div className='description-container'>
-          <p>
-            {propDescription}
-          </p>
-        </div>
+    <div id="main-container">
+      {menuOptions.map((option, index) => (
+        <button
+          key={option.title}
+          className={`menu-button button-${index + 1}`}
+          onMouseEnter={() => setPropDescription(option.description)}
+          onMouseLeave={() => setPropDescription('Hover over an option to see details.')}
+        >
+          {option.title}
+        </button>
+      ))}
+      <div className="description-container">
+        <p>{propDescription}</p>
       </div>
-    </>
-    
-  )
-}
+    </div>
+  );
+};
 
-export default MainMenu
+export default MainMenu;
