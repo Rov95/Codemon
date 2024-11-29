@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './MainMenu.css';
 import { Option } from '../../interfaces/Option';
+import LogoutButton from '../main-menu/LogOutButton/logOut'; 
 
 const menuOptions: Option[] = [
   {
@@ -39,6 +40,7 @@ const MainMenu = () => {
       <div className="description-container">
         <p>{propDescription}</p>
       </div>
+      <LogoutButton />
     </div>
   );
 };
