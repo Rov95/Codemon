@@ -1,9 +1,16 @@
-import { heavyStats } from '../heroData';
+import { HeroStats } from "../clases/heroStats";
+import { Skill } from "./Skills";
 
 export interface Hero {
     id: number;
-    name: string;
-    description: string;
-    image: string;
-    stats: typeof heavyStats; //I need to change this later to herostats type
+    name?: string;
+    description?: string;
+    image?: string; 
+    characterName?: string; 
+    baseHealth?: number; 
+    basePower?: number;
+    baseSpeed?: number;
+    baseDefense?: number;
+    defaultSkills?: Skill[]; 
+    stats?: HeroStats;
 }

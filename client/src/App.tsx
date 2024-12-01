@@ -5,6 +5,7 @@ from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import MainMenu from './pages/main-menu/MainMenu';
 import HeroesGallery from './pages/HeroesGallery/heroesGallery';
+import BattleComponent from './pages/Battle/battle';
 import './App.css';
 
 const App: React.FC = () => {
@@ -65,6 +66,14 @@ const App: React.FC = () => {
           element={
             // <PrivateRoute>
               <div>Settings Page Coming Soon!</div> 
+            /* </PrivateRoute> */
+          }
+        />
+        <Route
+          path="/battle"
+          element={
+            // <PrivateRoute>
+              <BattleComponent />
             /* </PrivateRoute> */
           }
         />

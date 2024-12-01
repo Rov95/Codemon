@@ -1,6 +1,7 @@
 export interface Skill {
     skillName: string;
     slotRequired: number;
+    description?: string; 
 }
 
 export interface PassiveSkill extends Skill {
@@ -8,10 +9,11 @@ export interface PassiveSkill extends Skill {
 }
 
 export interface TrapSkill extends Skill {
-    trapEffect: string; // Example: "Stun", "Slow", etc.
+    trapEffect: string; 
 }
 
 export interface HeroStatsProps {
+    image: string
     characterName: string;
     baseHealth: number;
     basePower: number;
@@ -24,6 +26,7 @@ export interface HeroStatsProps {
 }
 
 export class HeroStats {
+    image!: string;
     characterName: string;
     baseHealth: number;
     basePower: number;
@@ -69,7 +72,6 @@ export class HeroStats {
         this.trapSkills = new Array(5).fill(null);
         this.availablePoints = availablePoints;
 
-      // Assign initial trap skills if provided
         trapSkills.forEach((skill, index) => {
             if (index < 5) this.trapSkills[index] = skill;
         });

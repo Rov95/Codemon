@@ -1,4 +1,8 @@
-import { HeroStats, Skill, PassiveSkill, TrapSkill } from './clases/heroStats';
+import { HeroStats, Skill, PassiveSkill, TrapSkill } from '../clases/heroStats';
+
+import TankImage from '../assets/heavy.svg';
+import DemonImage from '../assets/power.svg';
+import NinjaImage from '../assets/speed.svg';
 
 const defaultSkills: Skill[] = [
     { skillName: "Basic Attack", slotRequired: 0 },
@@ -12,6 +16,7 @@ const passiveSkill: PassiveSkill = { skillName: "Regeneration", isPassive: true,
 const trapSkill: TrapSkill = { skillName: "Stun Trap", trapEffect: "Stun", slotRequired: 2 };
 
 export const heavyStats = new HeroStats({
+    image: TankImage,
     characterName: "Heavy",
     baseHealth: 120,
     basePower: 40,
@@ -24,6 +29,7 @@ export const heavyStats = new HeroStats({
 });
 
 export const demonStats = new HeroStats({
+    image: DemonImage,
     characterName: "Demon",
     baseHealth: 100,
     basePower: 50,
@@ -36,6 +42,7 @@ export const demonStats = new HeroStats({
 });
 
 export const ninjaStats = new HeroStats({
+    image: NinjaImage,
     characterName: "Ninja",
     baseHealth: 80,
     basePower: 60,

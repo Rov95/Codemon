@@ -8,7 +8,7 @@ interface Skill {
 interface SkillsProps {
     skills: Skill[];
     onSkillSelect: (skill: Skill) => void;
-    onSkillHover: (skill: Skill | null) => void; // Allow null to handle hover leave
+    onSkillHover: (skill: Skill | null) => void; 
 }
 
 const Skills: React.FC<SkillsProps> = ({ skills, onSkillSelect, onSkillHover }) => {

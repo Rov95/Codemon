@@ -1,20 +1,17 @@
 import React from 'react';
+import { Hero } from '../../../../interfaces/Hero';
+import './styles.css'
 
 interface HeroStatsProps {
-    hero: {
-        image?: string;
-        characterName: string;
-        baseHealth: number;
-        basePower: number;
-        baseSpeed: number;
-        baseDefense: number;
-    };
+    hero: Hero
 }
 
 const HeroStats: React.FC<HeroStatsProps> = ({ hero }) => {
     return (
         <div className="hero-stats">
-            <img src={hero.image} alt={`${hero.characterName} icon`} className="hero-icon" />
+            <div className="hero-image-container">
+                <img src={hero.image} alt={`${hero.characterName} icon`} className="hero-icon" />
+            </div>
             <div className="stats">
                 <p>Health: {hero.baseHealth}</p>
                 <p>Power: {hero.basePower}</p>

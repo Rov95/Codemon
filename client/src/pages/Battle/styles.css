@@ -1,0 +1,86 @@
+/* General battle container */
+.battle-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+    padding: 20px;
+    background-color: #07335a;
+}
+
+/* Character info section */
+.battle-screen {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin-bottom: 20px;
+}
+
+.character-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+    text-align: center;
+}
+
+.character-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.health-bar {
+    position: relative;
+    width: 80%;
+    height: 20px;
+    background-color: #ccc;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+.health-bar-fill {
+    height: 100%;
+    background-color: #4caf50;
+    border-radius: 10px;
+}
+
+/* Battle log */
+.battle-log {
+    width: 80%;
+    height: 150px;
+    background-color: #fff;
+    border: 2px solid #000;
+    border-radius: 5px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.log-content {
+    font-size: 0.9rem;
+    color: #333;
+}
+
+/* Action buttons */
+.actions {
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.action-button,
+.return-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #ffcc00;
+    border: 2px solid #000;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.action-button:hover,
+.return-button:hover {
+    background-color: #ffaa00;
+}

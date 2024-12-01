@@ -8,7 +8,7 @@ import TankImage from '../../assets/heavy.svg';
 import DemonImage from '../../assets/power.svg';
 import NinjaImage from '../../assets/speed.svg';
 
-import { heavyStats, demonStats, ninjaStats } from './../../heroData';
+import { heavyStats, demonStats, ninjaStats } from '../../characters/heroData';
 
 const heroes: Hero[] = [
     { id: 1, name: 'Tank', description: 'A strong and brave fighter.', image: TankImage, stats: heavyStats },
@@ -19,7 +19,7 @@ const heroes: Hero[] = [
 const HeroesGallery: React.FC = () => {
     const [selectedHero, setSelectedHero] = useState<Hero | null>(null);;
 
-    const handleHeroSelect = (hero: any) => {
+    const handleHeroSelect = (hero: Hero) => {
         setSelectedHero(hero);
     };
 
@@ -30,7 +30,7 @@ const HeroesGallery: React.FC = () => {
     return (
         <div className="heroes-gallery-container">
             {selectedHero ? (
-                <HeroDetails hero={selectedHero.stats} onReturn={handleReturn} />
+                <HeroDetails hero={ {...selectedHero.stats, image:selectedHero.image}} onReturn={handleReturn} />
             ) : (
                 <>
                     <h1>Heroes Gallery</h1>
