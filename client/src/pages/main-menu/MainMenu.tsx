@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './MainMenu.css';
 import { Option } from '../../interfaces/Option';
-// import LogoutButton from '../main-menu/LogOutButton/logOut'; 
+import LogoutButton from '../main-menu/LogOutButton/logOut'; 
 
 const menuOptions: Option[] = [
   {
@@ -47,7 +47,7 @@ const MainMenu = () => {
       <div className="description-container">
         <p>{propDescription}</p>
       </div>
-      {/* <LogoutButton /> */}
+      <LogoutButton />
     </div>
   );
 };

@@ -31,9 +31,9 @@ const App: React.FC = () => {
           // path="/dashboard"
           path='/'//tenemos que eliminar esta linea una ves el back este listo 
           element={
-            // <PrivateRoute>
-              <MainMenu />
-            // </PrivateRoute>
+              // <PrivateRoute>
+                  <MainMenu />
+              /* </PrivateRoute> */
           }
         />
         <Route
@@ -41,7 +41,7 @@ const App: React.FC = () => {
           element={
             // <PrivateRoute>
               <HeroesGallery />
-            // </PrivateRoute>
+            /* </PrivateRoute> */
           }
         />
         <Route
@@ -49,7 +49,7 @@ const App: React.FC = () => {
           element={
             // <PrivateRoute>
               <div>Battle Arena Page Coming Soon!</div> 
-            // </PrivateRoute>
+            /* </PrivateRoute> */
           }
         />
         <Route
@@ -57,7 +57,7 @@ const App: React.FC = () => {
           element={
             // <PrivateRoute>
               <div>Training-grounds Page Coming Soon!</div> 
-            // </PrivateRoute>
+            /* </PrivateRoute> */
           }
         />
         <Route
@@ -65,7 +65,7 @@ const App: React.FC = () => {
           element={
             // <PrivateRoute>
               <div>Settings Page Coming Soon!</div> 
-            // </PrivateRoute>
+            /* </PrivateRoute> */
           }
         />
       </Routes>

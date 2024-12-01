@@ -1,0 +1,19 @@
+.heroes-gallery-container {
+    padding: 20px;
+    text-align: center;
+    background: url('../../assets/CharacterSelection.svg') no-repeat center center fixed;
+    background-size: contain;
+    color: #fff;
+    min-height: 100vh;
+}
+
+.heroes-gallery-container h1 {
+    margin-bottom: 20px;
+}
+
+.heroes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 10px;
+}
