@@ -1,7 +1,10 @@
-import { Enemy } from "../clases/EnemyStats";
+import { Enemy } from "../classes/EnemyStats";
+
+import goblinImage from '../assets/goblin.svg';
 
 export const goblinEnemy = new Enemy({
     name: "Goblin",
+    image: goblinImage,
     baseHealth: 200,
     basePower: 30,
     baseSpeed: 25,

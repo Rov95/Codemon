@@ -2,8 +2,6 @@ import { HeroStats } from "./heroStats";
 import { Enemy } from "./EnemyStats";
 import { Skill } from "../interfaces/Skills";
 
-
-
 export class Battle {
     hero: HeroStats;
     enemy: Enemy;
@@ -17,7 +15,7 @@ export class Battle {
         const damage = this.calculateSkillDamage(this.hero, this.enemy, skill);
         const isEnemyAlive = this.enemy.takeDamage(damage);
         return isEnemyAlive
-            ? `${this.hero.characterName} dealt ${damage} damage! Enemy ${this.enemy.name} has ${this.enemy.currentHealth} health left.`
+            ? `${this.hero.name} dealt ${damage} damage! Enemy ${this.enemy.name} has ${this.enemy.currentHealth} health left.`
             : `${this.enemy.name} is defeated!`;
     }
 
@@ -25,14 +23,14 @@ export class Battle {
         const damage = this.enemy.calculateDamage();
         const isHeroAlive = this.hero.takeDamage(damage);
         return isHeroAlive
-            ? `${this.enemy.name} dealt ${damage} damage! Hero ${this.hero.characterName} has ${this.hero.currentHealth} health left.`
-            : `${this.hero.characterName} is defeated!`;
+            ? `${this.enemy.name} dealt ${damage} damage! Hero ${this.hero.name} has ${this.hero.currentHealth} health left.`
+            : `${this.hero.name} is defeated!`;
     }
 
     calculateSkillDamage(attacker: HeroStats | Enemy, defender: HeroStats | Enemy, skill: Skill): number {
         const baseDamage = attacker.basePower;
         const defenseReduction = defender.baseDefense * 0.1;
-        const skillModifier = skill.slotRequired; // Adjust damage based on skill complexity
+        const skillModifier = skill.slotRequired;
         return Math.max(baseDamage + skillModifier - defenseReduction, 1);
     }
 

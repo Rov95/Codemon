@@ -1,4 +1,4 @@
-import { HeroStats } from "../clases/heroStats";
+import { HeroStats } from "../classes/heroStats";
 import { Skill } from "./Skills";
 
 export interface Hero {

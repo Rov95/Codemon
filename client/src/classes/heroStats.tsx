@@ -13,8 +13,11 @@ export interface TrapSkill extends Skill {
 }
 
 export interface HeroStatsProps {
-    image: string
-    characterName: string;
+    id: number;
+    name: string;
+    image: string;
+    description: string;
+    maxHealth: number;
     baseHealth: number;
     basePower: number;
     baseSpeed: number;
@@ -26,8 +29,11 @@ export interface HeroStatsProps {
 }
 
 export class HeroStats {
-    image!: string;
-    characterName: string;
+    id: number;
+    name: string;
+    description: string;
+    image: string;
+    maxHealth: number;
     baseHealth: number;
     basePower: number;
     baseSpeed: number;
@@ -45,7 +51,11 @@ export class HeroStats {
     availablePoints: number;
 
     constructor({
-        characterName,
+        id,
+        name,
+        description,
+        image,
+        maxHealth,
         baseHealth,
         basePower,
         baseSpeed,
@@ -55,7 +65,11 @@ export class HeroStats {
         trapSkills = [],
         availablePoints = 5,
     }: HeroStatsProps) {
-        this.characterName = characterName;
+        this.id= id;
+        this.name= name;
+        this.image= image;
+        this.description= description;
+        this.maxHealth = maxHealth
         this.baseHealth = baseHealth;
         this.basePower = basePower;
         this.baseSpeed = baseSpeed;
@@ -100,22 +114,30 @@ export class HeroStats {
                 this.currentDefense = this.baseDefense - 10;
                 break;
             default:
-                console.warn(`${this.characterName} is out of health bars!`);
+                console.warn(`${this.name} is out of health bars!`);
                 break;
         }
     }
 
     takeDamage(damage: number): boolean {
         this.currentHealth -= damage;
-
-    if (this.currentHealth <= 0 && this.activeHealthBar < 3) {
-        this.activeHealthBar++;
-        this.currentHealth = this.baseHealth;
-        this.updateStatsOnHealthBarChange();
-        return true;
-    }
-
-        return this.currentHealth > 0;
+    
+        // Check if the current health drops below or equal to zero
+        if (this.currentHealth <= 0) {
+            if (this.activeHealthBar < 3) {
+                // Shift to the next health bar
+                this.activeHealthBar++;
+                this.currentHealth = this.baseHealth;
+                this.updateStatsOnHealthBarChange();
+                return true; // The hero is still alive with the new health bar
+            } else {
+                // No more health bars left
+                this.currentHealth = 0;
+                return false; // The hero is defeated
+            }
+        }
+    
+        return true; 
     }
 
     heal(amount: number) {

@@ -10,7 +10,7 @@ const HeroStats: React.FC<HeroStatsProps> = ({ hero }) => {
     return (
         <div className="hero-stats">
             <div className="hero-image-container">
-                <img src={hero.image} alt={`${hero.characterName} icon`} className="hero-icon" />
+                <img src={hero.image} alt={`${hero.name} icon`} className="hero-icon" />
             </div>
             <div className="stats">
                 <p>Health: {hero.baseHealth}</p>

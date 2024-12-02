@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import HeroStats from "./Herostats/herostats";
+// import { HeroStats as HeroStatsClass } from "../../../classes/heroStats";
 import Skills from "./skills/skills";
 import TrapSkills from "./TrapSkills/trapSkills";
 import PassiveSkills from "./PasiveSkills/pasiveSkills";
@@ -8,12 +9,12 @@ import SelectedSkills from "./SelectedSkills/selectedskills";
 import SlotAvailable from "./AvailSlots/slots";
 import Description from "./Description/description";
 import { Skill } from "../../../interfaces/Skills";
-// import { Hero } from "../../../interfaces/Hero";
+import { Hero } from "../../../interfaces/Hero";
 import './styles.css'
 
 
 interface HeroDetailsProps {
-    hero: any;//type is Hero but it is complicating the implementation
+    hero: Hero;
     onReturn: () => void;
 }
 
@@ -42,7 +43,11 @@ const HeroDetails: React.FC<HeroDetailsProps> = ({ hero, onReturn }) => {
     };
 
     const handleSelectForBattle = () => {
-        navigate("/battle", { state: { hero } });
+        if (!hero) {
+            console.error("Hero object is null or undefined!");
+            return;
+        }
+        navigate("/battle", { state: { hero: {...hero} } }); // Spread to prevent reference issues
     };
 
     return (

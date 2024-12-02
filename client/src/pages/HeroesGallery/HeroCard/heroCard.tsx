@@ -2,8 +2,12 @@ import React, {useState} from 'react';
 import './styles.css';
 import { Hero } from '../../../interfaces/Hero';
 
+interface HeroCardProps {
+    hero: Hero;
+    onSelect: (hero: Hero) => void;
+}
 
-const HeroCard: React.FC<{ hero: Hero; onSelect: (hero: Hero) => void }> = ({ hero, onSelect }) => {
+const HeroCard: React.FC< HeroCardProps > = ({ hero, onSelect }) => {
     
     const [clicked, setClicked] = useState(false);
 
