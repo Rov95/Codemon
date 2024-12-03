@@ -1,26 +1,12 @@
 import { useState } from "react";
-import HeroesGallery from "../../HeroesGallery/heroesGallery";
 import HeroCard from "../../HeroesGallery/HeroCard/heroCard";
+import { heavyStats, demonStats, ninjaStats } from '../../../characters/heroData';
 import { Navigate, useNavigate } from "react-router-dom";
+import { Hero } from "../../../interfaces/Hero";
 
 
-const heroes = [
-  { 
-      id: 1, name: 'Tank', 
-      description: 'A strong and brave fighter.', 
-      image: '../../../assets/heavy.svg' 
-  },
-  { 
-      id: 2, name: 'Demon', 
-      description: 'A master of magical spells.', 
-      image: '/assets/mage.png' 
-  },
-  { 
-      id: 3, name: 'Ninja', 
-      description: 'A sharpshooter with unparalleled accuracy.', 
-      image: '/assets/archer.png' 
-  },
-];
+const heroes: Hero[] = [ heavyStats, demonStats, ninjaStats];
+
 interface Props {
   handleStep: (step: number) => void;
 }
@@ -36,9 +22,10 @@ const PlayerSettings = ({handleStep} : Props) => {
         <div className="heroes-grid">
             {heroes.map((hero) => (
               <div onClick={()=>selectPlayerHero(hero.name)}>
-                <HeroCard key={hero.id} hero={hero} />
+                <HeroCard key={hero.id} hero={hero} onSelect={function (hero: Hero): void {
+                  throw new Error("Function not implemented.");
+                } } />
               </div>
-           
             ))}
         </div>
       </div>

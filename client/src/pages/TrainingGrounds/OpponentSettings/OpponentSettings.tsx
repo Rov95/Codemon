@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import HeroCard from '../../HeroesGallery/HeroCard/heroCard';
+import { Hero } from '../../../interfaces/Hero';
 
 
 const heroes = [
@@ -32,7 +33,9 @@ const OpponentSettings = ({handleStep} : Props) => {
         <div className="heroes-grid">
             {heroes.map((hero) => (
             <div onClick={()=>selectOpponentHero(hero.name)}>
-            <HeroCard key={hero.id} hero={hero} />
+            <HeroCard key={hero.id} hero={hero} onSelect={function (hero: Hero): void {
+                  throw new Error('Function not implemented.');
+                } } />
           </div>
             ))}
         </div>

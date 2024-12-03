@@ -34,7 +34,8 @@ const HeroesGallery: React.FC = () => {
             ) : (
                 <>
                     <div className='return-div'>
-                        <button onClick={() => navigate('/')} className='return-btn'>Back to Main Menu</button>
+                        {/* hay que cambiar el path */}
+                        <button onClick={() => navigate('/dashboard')} className='return-btn'>Back to Main Menu</button>
                     </div>
                     
                     <h1>Select your Hero</h1>
