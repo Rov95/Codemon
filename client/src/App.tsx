@@ -58,13 +58,8 @@ const App: React.FC = () => {
           path="/training-grounds"
           element={
             // <PrivateRoute>
-<<<<<<< HEAD
-              <div>Training-grounds Page Coming Soon!</div> 
-            /* </PrivateRoute> */
-=======
               <TrainingGrounds/> 
             // </PrivateRoute>
->>>>>>> 0160359 (unfinished training grounds)
           }
         />
         <Route

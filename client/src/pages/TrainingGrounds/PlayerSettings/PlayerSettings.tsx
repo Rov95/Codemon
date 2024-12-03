@@ -8,7 +8,7 @@ const heroes = [
   { 
       id: 1, name: 'Tank', 
       description: 'A strong and brave fighter.', 
-      image: '/assets/heavy.png' 
+      image: '../../../assets/heavy.svg' 
   },
   { 
       id: 2, name: 'Demon', 

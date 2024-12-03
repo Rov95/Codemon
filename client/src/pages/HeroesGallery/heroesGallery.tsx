@@ -5,6 +5,7 @@ import HeroDetails from './HeroDetails/heroDetails';
 import { Hero } from '../../interfaces/Hero';
 
 import { heavyStats, demonStats, ninjaStats } from '../../characters/heroData';
+import { useNavigate } from 'react-router-dom';
 
 const heroes: Hero[] = [ heavyStats, demonStats, ninjaStats];
 
@@ -15,6 +16,7 @@ heroes.forEach(hero => {
 });
 
 const HeroesGallery: React.FC = () => {
+    const navigate = useNavigate();
     const [selectedHero, setSelectedHero] = useState<Hero | null>(null);;
 
     const handleHeroSelect = (hero: Hero) => {
@@ -31,6 +33,10 @@ const HeroesGallery: React.FC = () => {
                 <HeroDetails hero={ selectedHero } onReturn={handleReturn} />
             ) : (
                 <>
+                    <div className='return-div'>
+                        <button onClick={() => navigate('/')} className='return-btn'>Back to Main Menu</button>
+                    </div>
+                    
                     <h1>Select your Hero</h1>
                     <div className="heroes-grid">
                         {heroes.map((hero) => (
