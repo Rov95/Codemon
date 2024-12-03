@@ -7,6 +7,7 @@ import MainMenu from './pages/main-menu/MainMenu';
 import HeroesGallery from './pages/HeroesGallery/heroesGallery';
 import BattleComponent from './pages/Battle/battle';
 import './App.css';
+import TrainingGrounds from './pages/TrainingGrounds/TrainingGrounds';
 
 const App: React.FC = () => {
   // const [isSignedIn, setIsSignedIn] = useState<boolean>(() => {
@@ -57,8 +58,13 @@ const App: React.FC = () => {
           path="/training-grounds"
           element={
             // <PrivateRoute>
+<<<<<<< HEAD
               <div>Training-grounds Page Coming Soon!</div> 
             /* </PrivateRoute> */
+=======
+              <TrainingGrounds/> 
+            // </PrivateRoute>
+>>>>>>> 0160359 (unfinished training grounds)
           }
         />
         <Route
