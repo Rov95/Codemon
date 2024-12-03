@@ -1,0 +1,32 @@
+.hero-details-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.main-section {
+display: flex;
+justify-content: space-between;
+}
+
+.bottom-section {
+display: flex;
+justify-content: space-between;
+}
+
+.hero-stats,
+.skills,
+.trap-skills,
+.passive-skills,
+.selected-skills,
+.slot-available,
+.description {
+border: 2px solid cyan;
+padding: 1rem;
+text-align: center;
+}
+
+.return-button {
+background-color: yellow;
+font-weight: bold;
+}

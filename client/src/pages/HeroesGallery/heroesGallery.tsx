@@ -1,36 +1,54 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './styles.css';
 import HeroCard from './HeroCard/heroCard';
+import HeroDetails from './HeroDetails/heroDetails';
+import { Hero } from '../../interfaces/Hero';
 
-const heroes = [
-    { 
-        id: 1, name: 'Tank', 
-        description: 'A strong and brave fighter.', 
-        image: '/assets/heavy.png' 
-    },
-    { 
-        id: 2, name: 'Demon', 
-        description: 'A master of magical spells.', 
-        image: '/assets/mage.png' 
-    },
-    { 
-        id: 3, name: 'Ninja', 
-        description: 'A sharpshooter with unparalleled accuracy.', 
-        image: '/assets/archer.png' 
-    },
-];
+import { heavyStats, demonStats, ninjaStats } from '../../characters/heroData';
+import { useNavigate } from 'react-router-dom';
+
+const heroes: Hero[] = [ heavyStats, demonStats, ninjaStats];
+
+heroes.forEach(hero => {
+    if (!hero.id || !hero.name || !hero.defaultSkills) {
+        console.error("Invalid hero data:", hero);
+    }
+});
 
 const HeroesGallery: React.FC = () => {
+    const navigate = useNavigate();
+    const [selectedHero, setSelectedHero] = useState<Hero | null>(null);;
+
+    const handleHeroSelect = (hero: Hero) => {
+        setSelectedHero(hero);
+    };
+
+    const handleReturn = () => {
+        setSelectedHero(null);
+    };
+
     return (
         <div className="heroes-gallery-container">
-        <h1>Heroes Gallery</h1>
-        <div className="heroes-grid">
-            {heroes.map((hero) => (
-            <HeroCard key={hero.id} hero={hero} />
-            ))}
-        </div>
+            {selectedHero ? (
+                <HeroDetails hero={ selectedHero } onReturn={handleReturn} />
+            ) : (
+                <>
+                    <div className='return-div'>
+                        {/* hay que cambiar el path */}
+                        <button onClick={() => navigate('/dashboard')} className='return-btn'>Back to Main Menu</button>
+                    </div>
+                    
+                    <h1>Select your Hero</h1>
+                    <div className="heroes-grid">
+                        {heroes.map((hero) => (
+                            <HeroCard key={hero.id} hero={hero} onSelect={handleHeroSelect} />
+                        ))}
+                    </div>
+                </>
+            )}
         </div>
     );
 };
 
 export default HeroesGallery;
+

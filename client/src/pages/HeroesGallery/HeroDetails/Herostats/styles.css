@@ -1,0 +1,30 @@
+.hero-stats {
+    display: flex;
+    align-items: center;
+    gap: 16px; 
+}
+
+.hero-image-container {
+    width: 100px; 
+    height: 200px; 
+    overflow: hidden; 
+    border-radius: 10%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0; 
+    background-color: #211c688b; 
+}
+
+.hero-icon {
+    width: 100%; 
+    height: auto; 
+    object-fit: cover; 
+    object-position: top; 
+}
+
+.stats {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; 
+}

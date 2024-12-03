@@ -1,0 +1,61 @@
+.hero-card {
+    background: #1313528c;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    color: #fff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hero-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.hero-image {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.hero-name {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.hero-description {
+    margin-top: 5px;
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+.hero-card.clicked {
+    animation: brighten-fade-out 0.5s forwards;
+}
+
+
+@keyframes brighten-fade-out {
+    0% {
+        filter: brightness(1);
+        opacity: 1;
+    }
+    50% {
+        filter: brightness(3);
+        opacity: 0.8;
+    }
+    100% {
+        filter: brightness(2);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 1024px) {
+    .hero-image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+}
