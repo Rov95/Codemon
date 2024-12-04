@@ -4,8 +4,13 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import MainMenu from './pages/main-menu/MainMenu';
 import HeroesGallery from './pages/HeroesGallery/heroesGallery';
 import BattleComponent from './pages/Battle/battle';
-import './App.css';
+import OnlineBattle from './pages/Battle-Arena/OnlineBattle/onlineBattle';
+import { HeroStats } from './classes/heroStats';
 import TrainingGrounds from './pages/TrainingGrounds/TrainingGrounds';
+import BattleArena from './pages/Battle-Arena/battleArena';
+import WaitingRoom from './pages/Battle-Arena/WaitingRoom/waitingRoom';
+import './App.css';
+import { heavyStats } from './characters/heroData';
 
 const App: React.FC = () => {
   const [isSignedIn, setIsSignedIn] = useState<boolean>(() => {
@@ -23,57 +28,69 @@ const App: React.FC = () => {
   return (
     <Router>
       <Routes>
-        {/* <Route 
+        <Route 
           path="/" 
           element={<Welcome setIsSignedIn={setIsSignedIn} />} 
-        /> */}
+        />
         <Route
-          // path="/dashboard"
-          path='/'//tenemos que eliminar esta linea una ves el back este listo 
+          path="/dashboard"
+          // path='/'//tenemos que eliminar esta linea una ves el back este listo 
           element={
-              // <PrivateRoute>
+              <PrivateRoute>
                   <MainMenu />
-              // </PrivateRoute> 
+              </PrivateRoute> 
           }
         />
         <Route
           path="/heroes-gallery"
           element={
-            // <PrivateRoute>
+            <PrivateRoute>
               <HeroesGallery />
-            // </PrivateRoute> 
+            </PrivateRoute> 
           }
         />
         <Route
           path="/battle-arena"
           element={
-            // <PrivateRoute>
-              <div>Battle Arena Page Coming Soon!</div> 
-            // </PrivateRoute>
+            <PrivateRoute>
+              <BattleArena />
+            </PrivateRoute>
           }
+        />
+        <Route
+          path="/waiting-room"
+          element={
+            <PrivateRoute>
+              <WaitingRoom hero={heavyStats} />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/online-battle"
+          element={<OnlineBattle hero={HeroStats} room='' />}
         />
         <Route
           path="/training-grounds"
           element={
-            // <PrivateRoute>
+            <PrivateRoute>
               <TrainingGrounds/> 
-            // </PrivateRoute>
+            </PrivateRoute>
           }
         />
         <Route
           path="/settings"
           element={
-            // <PrivateRoute>
+            <PrivateRoute>
               <div>Settings Page Coming Soon!</div> 
-            /* </PrivateRoute> */
+            </PrivateRoute>
           }
         />
         <Route
           path="/battle"
           element={
-            // <PrivateRoute>
+            <PrivateRoute>
               <BattleComponent />
-            /* </PrivateRoute> */
+            </PrivateRoute>
           }
         />
       </Routes>
