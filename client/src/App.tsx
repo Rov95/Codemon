@@ -5,12 +5,12 @@ import MainMenu from './pages/main-menu/MainMenu';
 import HeroesGallery from './pages/HeroesGallery/heroesGallery';
 import BattleComponent from './pages/Battle/battle';
 import OnlineBattle from './pages/Battle-Arena/OnlineBattle/onlineBattle';
-import { HeroStats } from './classes/heroStats';
+// import { HeroStats } from './classes/heroStats';
 import TrainingGrounds from './pages/TrainingGrounds/TrainingGrounds';
 import BattleArena from './pages/Battle-Arena/battleArena';
 import WaitingRoom from './pages/Battle-Arena/WaitingRoom/waitingRoom';
 import './App.css';
-import { heavyStats } from './characters/heroData';
+// import { heavyStats } from './characters/heroData';
 
 const App: React.FC = () => {
   const [isSignedIn, setIsSignedIn] = useState<boolean>(() => {
@@ -61,13 +61,13 @@ const App: React.FC = () => {
           path="/waiting-room"
           element={
             <PrivateRoute>
-              <WaitingRoom hero={heavyStats} />
+              <WaitingRoom />
             </PrivateRoute>
           }
         />
         <Route
           path="/online-battle"
-          element={<OnlineBattle hero={HeroStats} room='' />}
+          element={<OnlineBattle />}
         />
         <Route
           path="/training-grounds"

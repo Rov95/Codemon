@@ -1,23 +1,30 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { socketService } from "../../../services/socketService";
 import { HeroStats } from "../../../classes/heroStats";
 
-interface WaitingRoomProps {
-    hero: HeroStats;
-}
+interface WaitingRoomProps {}
 
-const WaitingRoom: React.FC<WaitingRoomProps> = ({ hero }) => {
+const WaitingRoom: React.FC<WaitingRoomProps> = () => {
     const navigate = useNavigate();
+    const location = useLocation();
+    const { hero }: { hero: HeroStats } = location.state || {};
+
     const [roomName, setRoomName] = useState("");
     const [statusMessage, setStatusMessage] = useState("Waiting for an opponent...");
 
     useEffect(() => {
+        if (!hero) {
+            console.error("No hero selected for the waiting room.");
+            navigate("/battle-arena");
+            return;
+        }
+
         socketService.connect("http://localhost:3000");
 
         socketService.on("match_ready", ({ room }) => {
             setStatusMessage("Match found! Redirecting...");
-            navigate("/online-battle", { state: { room, hero } });
+            setTimeout(() => navigate("/online-battle", { state: { room, hero } }), 1500);
         });
 
         socketService.on("player_disconnected", () => {
@@ -39,11 +46,6 @@ const WaitingRoom: React.FC<WaitingRoomProps> = ({ hero }) => {
         );
     };
 
-    const handleReturn = () => {
-        socketService.disconnect();
-        navigate("/battle-arena");
-    };
-
     return (
         <div className="waiting-room-container">
             <h1>Waiting Room</h1>
@@ -58,7 +60,9 @@ const WaitingRoom: React.FC<WaitingRoomProps> = ({ hero }) => {
                 />
                 <button onClick={handleJoinRoom} className="join-btn">Join Room</button>
             </div>
-            <button onClick={handleReturn} className="return-btn">Back to Arena</button>
+            <button onClick={() => navigate("/battle-arena")} className="return-btn">
+                Back to Arena
+            </button>
         </div>
     );
 };

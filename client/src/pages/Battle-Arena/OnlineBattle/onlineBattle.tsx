@@ -1,24 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { HeroStats, HeroStatsProps } from "../../../classes/heroStats";
+import { useNavigate, useLocation } from "react-router-dom";
+import { HeroStats } from "../../../classes/heroStats";
 import HeroInfo from "../../Battle/HeroInfo/heroInfo";
 import EnemyInfo from "../../Battle/EnemyInfo/enemyInfo";
 import BattleLog from "../../Battle/BattleLog/battleLog";
 import BattleActions from "../../Battle/BattleActions/battleActions";
 import { socketService } from "../../../services/socketService";
 
-interface OnlineBattleProps {
-    hero: HeroStatsProps | null | undefined; // Handle raw or invalid hero data
-    room: string | null | undefined; // Handle invalid room data
-}
-
-const OnlineBattle: React.FC<OnlineBattleProps> = ({ hero, room }) => {
+const OnlineBattle: React.FC = () => {
     const navigate = useNavigate();
+    const location = useLocation();
+    const { hero, room }: { hero: HeroStats; room: string } = location.state || {};
 
-    // Debug: Log incoming props
-    console.log("OnlineBattle Props:", { hero, room });
-
-    // Validate and reconstruct hero
     const [reconstructedHero, setReconstructedHero] = useState<HeroStats | null>(null);
     const [enemy, setEnemy] = useState<HeroStats | null>(null);
     const [battleLog, setBattleLog] = useState<string[]>([]);
@@ -33,18 +26,14 @@ const OnlineBattle: React.FC<OnlineBattleProps> = ({ hero, room }) => {
             return;
         }
 
-        // Reconstruct hero and validate required properties
         try {
-            const constructedHero = new HeroStats(hero);
-            setReconstructedHero(constructedHero);
-            console.log("Reconstructed Hero:", constructedHero);
+            setReconstructedHero(new HeroStats(hero));
         } catch (error) {
-            console.error("Failed to reconstruct hero:", error);
+            console.error("Error reconstructing hero:", error);
             navigate("/battle-arena");
             return;
         }
 
-        // Connect to the server and join the room
         socketService.connect("http://localhost:3000");
         socketService.emit("join_match", { room });
 
@@ -65,31 +54,11 @@ const OnlineBattle: React.FC<OnlineBattleProps> = ({ hero, room }) => {
         };
     }, [hero, room, navigate]);
 
-    const handleHeroAttack = (skill: any) => {
-        if (isBattleOver || currentTurn !== "Hero") return;
+    if (!reconstructedHero) {
+        return <div>Loading hero and room data...</div>;
+    }
 
-        const actionLog = `${reconstructedHero?.name} used ${skill.skillName}!`;
-        setBattleLog((prev) => [...prev, actionLog]);
-
-        socketService.emit("game_action", {
-            room,
-            action: {
-                hero: reconstructedHero,
-                skill,
-                log: actionLog,
-                nextTurn: "Enemy",
-            },
-        });
-
-        setCurrentTurn("Enemy");
-    };
-
-    const handleReturn = () => {
-        socketService.disconnect();
-        navigate("/battle-arena");
-    };
-
-    return reconstructedHero ? (
+    return (
         <div className="battle-container">
             <div className="character-images">
                 <div className="hero-container">
@@ -109,14 +78,10 @@ const OnlineBattle: React.FC<OnlineBattleProps> = ({ hero, room }) => {
                 winner={winner}
                 currentTurn={currentTurn}
                 heroSkills={reconstructedHero.defaultSkills || []}
-                onHeroAttack={handleHeroAttack}
+                onHeroAttack={() => {}}
                 onResetBattle={() => {}}
-                onReturn={handleReturn}
+                onReturn={() => navigate("/battle-arena")}
             />
-        </div>
-    ) : (
-        <div>
-            <p>Loading hero and room data...</p>
         </div>
     );
 };

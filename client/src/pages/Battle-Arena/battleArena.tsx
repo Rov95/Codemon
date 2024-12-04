@@ -1,18 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import HeroCard from "../HeroesGallery/HeroCard/heroCard";
-import { Hero } from "../../interfaces/Hero";
+import { HeroStats } from "../../classes/heroStats";
 import { heavyStats, demonStats, ninjaStats } from "../../characters/heroData";
 import { useNavigate } from "react-router-dom";
 import "./styless.css";
 
-const heroes: Hero[] = [heavyStats, demonStats, ninjaStats];
+const heroes: HeroStats[] = [heavyStats, demonStats, ninjaStats];
 
 const BattleArena: React.FC = () => {
     const navigate = useNavigate();
-    const [selectedHero, setSelectedHero] = useState<Hero | null>(null);
 
-    const handleHeroSelect = (hero: Hero) => {
-        setSelectedHero(hero);
+    const handleHeroSelect = (hero: HeroStats) => {
         navigate("/waiting-room", { state: { hero } });
     };
 
