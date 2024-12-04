@@ -75,15 +75,26 @@ io.on('connection', (socket) => {
             console.log(`Player ${socket.id} joined room: ${roomName}`);
     
             if (rooms[roomName].player1 && rooms[roomName].player2) {
+                const players = Array.from(io.sockets.adapter.rooms.get(roomName) || []);
+                const [player1, player2] = players;
+        
+                socket.to(roomName).emit('match_details', { 
+                    room: roomName,
+                    players: { player1, player2 }
+                });
                 io.to(roomName).emit('match_ready', { room: roomName });
                 console.log(`Match started in room: ${roomName}`);
             } else {
                 socket.emit('waiting_for_player');
             }
-        } catch (error) {
-            console.error("Error handling join_match event:", error);
-            socket.emit('error', { message: "An error occurred while joining the match." });
-        }
+            } catch (error) {
+                console.error("Error handling join_match event:", error);
+                socket.emit('error', { message: "An error occurred while joining the match." });
+            }
+    });
+
+    socket.on('send_hero_info', ({ room, hero }) => {
+        socket.to(room).emit('receive_hero_info', { hero });
     });
 
     // Handle player actions

@@ -124,7 +124,7 @@ export class HeroStats {
     
         // Check if the current health drops below or equal to zero
         if (this.currentHealth <= 0) {
-            if (this.activeHealthBar < 3) {
+            if (this.activeHealthBar < 1) {
                 // Shift to the next health bar
                 this.activeHealthBar++;
                 this.currentHealth = this.baseHealth;
@@ -147,7 +147,7 @@ export class HeroStats {
         const overflowHealing = this.currentHealth + amount - this.baseHealth;
         this.currentHealth = this.baseHealth;
 
-        if (this.activeHealthBar < 3) {
+        if (this.activeHealthBar < 1) {
             this.activeHealthBar++;
             this.currentHealth =
             overflowHealing > this.baseHealth ? this.baseHealth : overflowHealing;

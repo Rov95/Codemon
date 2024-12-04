@@ -1,4 +1,5 @@
 import { io, Socket } from "socket.io-client";
+import { HeroStats } from "../classes/heroStats";
 
 
 class SocketService {
@@ -16,6 +17,22 @@ class SocketService {
     emit(event: string, data?: any) {
         if (!this.socket) throw new Error("Socket is not connected");
         this.socket.emit(event, data);
+    }
+
+    sendHeroInfo(room: string, hero: HeroStats) {
+        this.emit('send_hero_info', { room, hero });
+    }
+    
+    onReceiveHeroInfo(callback: (hero: HeroStats) => void) {
+        this.on('receive_hero_info', ({ hero }) => callback(hero));
+    }
+
+    sendGameAction(room: string, action: any) {
+        this.emit('game_action', { room, action });
+    }
+
+    onGameUpdate(callback: (data: any) => void) {
+        this.on('update_game', callback);
     }
 
     disconnect() {
