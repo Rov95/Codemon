@@ -6,6 +6,7 @@ import HeroesGallery from './pages/HeroesGallery/heroesGallery';
 import BattleComponent from './pages/Battle/battle';
 import './App.css';
 import TrainingGrounds from './pages/TrainingGrounds/TrainingGrounds';
+import TrainingBattleComponent from './pages/TrainingBattle/TrainingBattle';
 
 const App: React.FC = () => {
   const [isSignedIn, setIsSignedIn] = useState<boolean>(() => {
@@ -57,6 +58,14 @@ const App: React.FC = () => {
           element={
             // <PrivateRoute>
               <TrainingGrounds/> 
+            // </PrivateRoute>
+          }
+        />
+        <Route
+          path="/training-battle"
+          element={
+            // <PrivateRoute>
+              <TrainingBattleComponent/> 
             // </PrivateRoute>
           }
         />

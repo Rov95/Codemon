@@ -1,0 +1,63 @@
+.actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    border: 2px solid #ffcc00;
+    border-radius: 10px;
+    width: 250px;
+    margin: 10px;
+    z-index: 5;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.actions p {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.actions h2 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: #ffcc00;
+}
+
+.actions .action-button,
+.actions .return-button {
+    background-color: #4caf50;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px 15px;
+    border: 2px solid #000;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.actions .action-button:hover,
+.actions .return-button:hover {
+    background-color: #ffa500;
+}
+
+.actions .action-button:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+}
+
+.actions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.action-button {
+    width: 100%;
+    text-align: center;
+}
