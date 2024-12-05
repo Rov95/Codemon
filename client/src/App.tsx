@@ -4,15 +4,10 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import MainMenu from './pages/main-menu/MainMenu';
 import HeroesGallery from './pages/HeroesGallery/heroesGallery';
 import BattleComponent from './pages/Battle/battle';
-<<<<<<< HEAD
+
 import './App.css';
-<<<<<<< HEAD
 import Settings from './pages/Settings/Settings';
-=======
-import TrainingGrounds from './pages/TrainingGrounds/TrainingGrounds';
 import TrainingBattleComponent from './pages/TrainingBattle/TrainingBattle';
->>>>>>> training-component
-=======
 import OnlineBattle from './pages/Battle-Arena/OnlineBattle/onlineBattle';
 // import { HeroStats } from './classes/heroStats';
 import TrainingGrounds from './pages/TrainingGrounds/TrainingGrounds';
@@ -20,7 +15,6 @@ import BattleArena from './pages/Battle-Arena/battleArena';
 import WaitingRoom from './pages/Battle-Arena/WaitingRoom/waitingRoom';
 import './App.css';
 // import { heavyStats } from './characters/heroData';
->>>>>>> main
 
 const App: React.FC = () => {
   const [isSignedIn, setIsSignedIn] = useState<boolean>(() => {
@@ -98,15 +92,9 @@ const App: React.FC = () => {
         <Route
           path="/settings"
           element={
-<<<<<<< HEAD
-            // <PrivateRoute>
-              <Settings/>
-            /* </PrivateRoute> */
-=======
             <PrivateRoute>
-              <div>Settings Page Coming Soon!</div> 
+              <Settings/>
             </PrivateRoute>
->>>>>>> main
           }
         />
         <Route
