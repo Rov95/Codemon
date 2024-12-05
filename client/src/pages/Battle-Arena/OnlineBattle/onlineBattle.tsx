@@ -136,7 +136,7 @@ const OnlineBattle: React.FC = () => {
                 <div
                     className="health-bar"
                     style={{
-                        width: `${(hero.currentHealth / hero.maxHealth) * 100}%`,
+                        width: `${(reconstructedHero.currentHealth / reconstructedHero.maxHealth) * 100}%`,
                         backgroundColor: getHealthBarColor(hero.currentHealth, hero.maxHealth),
                     }}
                 ></div>

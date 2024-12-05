@@ -105,36 +105,26 @@ export class HeroStats {
                 this.currentPower = this.basePower;
                 this.currentDefense = this.baseDefense;
                 break;
-            case 2:
-                this.currentPower = this.basePower + 5;
-                this.currentDefense = this.baseDefense - 5;
-                break;
-            case 3:
-                this.currentPower = this.basePower + 10;
-                this.currentDefense = this.baseDefense - 10;
-                break;
-            default:
-                console.warn(`${this.name} is out of health bars!`);
-                break;
+            // case 2:
+            //     this.currentPower = this.basePower + 5;
+            //     this.currentDefense = this.baseDefense - 5;
+            //     break;
+            // case 3:
+            //     this.currentPower = this.basePower + 10;
+            //     this.currentDefense = this.baseDefense - 10;
+            //     break;
+            // default:
+            //     console.warn(`${this.name} is out of health bars!`);
+                // break;
         }
     }
 
     takeDamage(damage: number): boolean {
         this.currentHealth -= damage;
     
-        // Check if the current health drops below or equal to zero
         if (this.currentHealth <= 0) {
-            if (this.activeHealthBar < 1) {
-                // Shift to the next health bar
-                this.activeHealthBar++;
-                this.currentHealth = this.baseHealth;
-                this.updateStatsOnHealthBarChange();
-                return true; // The hero is still alive with the new health bar
-            } else {
-                // No more health bars left
-                this.currentHealth = 0;
-                return false; // The hero is defeated
-            }
+            this.currentHealth = 0; 
+            return false;
         }
     
         return true; 
