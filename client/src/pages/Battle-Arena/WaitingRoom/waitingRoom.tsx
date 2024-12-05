@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { socketService } from "../../../services/socketService";
 import { HeroStats } from "../../../classes/heroStats";
+import './styless.css'
 
 interface WaitingRoomProps {}
 
@@ -48,8 +49,8 @@ const WaitingRoom: React.FC<WaitingRoomProps> = () => {
 
     return (
         <div className="waiting-room-container">
-            <h1>Waiting Room</h1>
-            <p>{statusMessage}</p>
+            <h1 className="title">Waiting Room</h1>
+            <p className="status-message">{statusMessage}</p>
             <div className="room-input-container">
                 <input
                     type="text"
