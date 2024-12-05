@@ -1,5 +1,6 @@
 .battle-container {
     background: url('../../assets/trainingG.svg') no-repeat center center fixed;
+    background-size: cover;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -83,6 +84,14 @@
 .shake {
     animation: shake-animation 0.5s;
 }
+
+
+.back-to-menu-bttn{
+    align-self: flex-start;
+    background-color: #c39d05;
+    margin: 24px 32px;
+}
+
 
 @keyframes shake-animation {
     0%, 100% { transform: translateX(0); }

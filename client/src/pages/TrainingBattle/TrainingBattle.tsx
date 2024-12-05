@@ -107,6 +107,7 @@ const TrainingBattleComponent : React.FC= () => {
 
     return (
         <div className="battle-container">
+            <button onClick={() => navigate('/training-grounds')} className="back-to-menu-bttn">Leave battle</button>
             <div className="character-images">
                 <div className="hero-container">
                     <HeroInfo hero={hero} getHealthBarColor={getHealthBarColor} />

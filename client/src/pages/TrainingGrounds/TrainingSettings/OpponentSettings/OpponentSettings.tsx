@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import HeroCard from '../../../HeroesGallery/HeroCard/heroCard';
 import { Hero } from '../../../../interfaces/Hero';
-import { goblinEnemy, sargeantEnemy } from '../../../../characters/EnemyData';
+import { goblinEnemy, sargeantEnemy, skeletonEnemy } from '../../../../characters/EnemyData';
 import Enemy from '../../../../interfaces/Enemy';
 import './OpponentSettings.css'
 
 
 
-const enemies: Enemy[] = [ goblinEnemy, sargeantEnemy ];
+const enemies: Enemy[] = [ goblinEnemy, sargeantEnemy, skeletonEnemy ];
 
 
 interface Props {

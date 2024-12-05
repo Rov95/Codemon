@@ -20,14 +20,17 @@ const BattleActions: React.FC<{
 }) => (
     <div className="actions">
         {isBattleOver ? (
-            <div>
+            <div className="options">
                 <h2>{winner} Wins!</h2>
-                <button onClick={onResetBattle} className="action-button">
-                    Restart
-                </button>
-                <button onClick={onReturn} className="return-button">
-                    Return to Training Grounds
-                </button>
+                <div className="option-bttns">
+                    <button onClick={onResetBattle} className="action-button">
+                        Restart
+                    </button>
+                    <button onClick={onReturn} className="return-button">
+                        Training Grounds
+                    </button>
+                </div>
+                
             </div>
         ) : (
             <>
