@@ -1,0 +1,13 @@
+h1 {
+  background: #131352b4;
+  width: fit-content;
+  padding: 8px 12px;
+  align-self: center;
+  border-radius: 4px;
+}
+
+.opponent-settings-container {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 32px;
+}
