@@ -7,14 +7,6 @@ const EnemyInfo: React.FC<{ enemy: any }> = ({ enemy }) => (
             <p>
                 {enemy.currentHealth} / {enemy.maxHealth} HP
             </p>
-        {/* <div className="health-bar">
-            <div
-                className="health-bar-fill"
-                style={{
-                    width: `${(enemy.currentHealth / enemy.maxHealth) * 100}%`,
-                }}
-            ></div>
-        </div> */}
     </div>
 );
 

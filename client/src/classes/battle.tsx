@@ -34,6 +34,12 @@ export class Battle {
         return Math.max(baseDamage + skillModifier - defenseReduction, 1);
     }
 
+    static calculateOnlineDamage(attacker: HeroStats, skill: Skill): number {
+        const baseDamage = attacker.currentPower;
+        const skillModifier = skill.slotRequired * 5; // Adjust multiplier as needed
+        return Math.max(Math.floor(baseDamage * 0.5) + skillModifier, 1);
+    }
+
     isBattleOver(): boolean {
         return this.hero.currentHealth <= 0 || this.enemy.currentHealth <= 0;
     }

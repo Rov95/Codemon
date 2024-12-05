@@ -26,6 +26,7 @@ export interface HeroStatsProps {
     passiveSkill: PassiveSkill | null;
     trapSkills: TrapSkill[];
     availablePoints: number;
+    currentHealth: number;
 }
 
 export class HeroStats {
@@ -64,6 +65,7 @@ export class HeroStats {
         passiveSkill = null,
         trapSkills = [],
         availablePoints = 5,
+        currentHealth,
     }: HeroStatsProps) {
         this.id= id;
         this.name= name;
@@ -75,7 +77,7 @@ export class HeroStats {
         this.baseSpeed = baseSpeed;
         this.baseDefense = baseDefense;
 
-        this.currentHealth = baseHealth;
+        this.currentHealth = currentHealth ?? baseHealth;
         this.currentPower = basePower;
         this.currentSpeed = baseSpeed;
         this.currentDefense = baseDefense;
@@ -105,16 +107,16 @@ export class HeroStats {
                 this.currentPower = this.basePower;
                 this.currentDefense = this.baseDefense;
                 break;
-            case 2:
-                this.currentPower = this.basePower + 5;
-                this.currentDefense = this.baseDefense - 5;
-                break;
-            case 3:
-                this.currentPower = this.basePower + 10;
-                this.currentDefense = this.baseDefense - 10;
-                break;
-            default:
-                console.warn(`${this.name} is out of health bars!`);
+            // case 2:
+            //     this.currentPower = this.basePower + 5;
+            //     this.currentDefense = this.baseDefense - 5;
+            //     break;
+            // case 3:
+            //     this.currentPower = this.basePower + 10;
+            //     this.currentDefense = this.baseDefense - 10;
+            //     break;
+            // default:
+            //     console.warn(`${this.name} is out of health bars!`);
                 break;
         }
     }
@@ -122,19 +124,9 @@ export class HeroStats {
     takeDamage(damage: number): boolean {
         this.currentHealth -= damage;
     
-        // Check if the current health drops below or equal to zero
         if (this.currentHealth <= 0) {
-            if (this.activeHealthBar < 3) {
-                // Shift to the next health bar
-                this.activeHealthBar++;
-                this.currentHealth = this.baseHealth;
-                this.updateStatsOnHealthBarChange();
-                return true; // The hero is still alive with the new health bar
-            } else {
-                // No more health bars left
-                this.currentHealth = 0;
-                return false; // The hero is defeated
-            }
+            this.currentHealth = 0; 
+            return false;
         }
     
         return true; 
@@ -147,7 +139,7 @@ export class HeroStats {
         const overflowHealing = this.currentHealth + amount - this.baseHealth;
         this.currentHealth = this.baseHealth;
 
-        if (this.activeHealthBar < 3) {
+        if (this.activeHealthBar < 1) {
             this.activeHealthBar++;
             this.currentHealth =
             overflowHealing > this.baseHealth ? this.baseHealth : overflowHealing;
