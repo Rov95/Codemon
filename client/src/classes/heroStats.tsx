@@ -26,6 +26,7 @@ export interface HeroStatsProps {
     passiveSkill: PassiveSkill | null;
     trapSkills: TrapSkill[];
     availablePoints: number;
+    currentHealth: number;
 }
 
 export class HeroStats {
@@ -64,6 +65,7 @@ export class HeroStats {
         passiveSkill = null,
         trapSkills = [],
         availablePoints = 5,
+        currentHealth,
     }: HeroStatsProps) {
         this.id= id;
         this.name= name;
@@ -75,7 +77,7 @@ export class HeroStats {
         this.baseSpeed = baseSpeed;
         this.baseDefense = baseDefense;
 
-        this.currentHealth = baseHealth;
+        this.currentHealth = currentHealth ?? baseHealth;
         this.currentPower = basePower;
         this.currentSpeed = baseSpeed;
         this.currentDefense = baseDefense;
@@ -115,7 +117,7 @@ export class HeroStats {
             //     break;
             // default:
             //     console.warn(`${this.name} is out of health bars!`);
-                // break;
+                break;
         }
     }
 

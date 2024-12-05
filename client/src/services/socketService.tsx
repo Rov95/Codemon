@@ -6,7 +6,10 @@ class SocketService {
     private socket: Socket | null = null;
 
     connect(url: string) {
-        this.socket = io(url, { withCredentials: true });
+        this.socket = io(url, { withCredentials: true, extraHeaders: {
+            'ngrok-skip-browser-warning': 'true', // Add this custom header
+            } 
+        });
     }
 
     on(event: string, callback: (data: any) => void) {

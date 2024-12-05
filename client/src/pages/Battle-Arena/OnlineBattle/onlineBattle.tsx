@@ -7,6 +7,7 @@ import BattleLog from "../../Battle/BattleLog/battleLog";
 import BattleActions from "../../Battle/BattleActions/battleActions";
 import { socketService } from "../../../services/socketService";
 import { Skill } from "../../../interfaces/Skills";
+import { Battle } from "../../../classes/battle";
 import './styles.css'
 
 const OnlineBattle: React.FC = () => {
@@ -46,7 +47,7 @@ const OnlineBattle: React.FC = () => {
             return;
         }
 
-        socketService.connect("https://bd76-181-32-12-10.ngrok-free.app");
+        socketService.connect("https://85f1-181-32-12-10.ngrok-free.app");
         socketService.emit("join_match", { room });
 
         socketService.on("match_ready", () => {
@@ -59,30 +60,43 @@ const OnlineBattle: React.FC = () => {
         });
 
         socketService.onGameUpdate(({ action }) => {
-            // Handle opponent's action
             setBattleLog((prev) => [...prev, action.log]);
-            setOpponentHero((prev) => {
-                if (!prev) return null;
-                const updatedHero = new HeroStats(prev);
-                if (action.type === 'attack') {
-                    updatedHero.takeDamage(action.damage);
-                }
-                return updatedHero;
-            });
-            
-            // Switch turns
-            setCurrentTurn("Hero");
-            setIsMyTurn(true);
+        
+            if (action.type === 'attack' && !isBattleOver) {
+                // When receiving opponent's attack, update our hero's health
+                setReconstructedHero((prev) => {
+                    if (!prev) return null;
+                    const updatedHero = new HeroStats({
+                        ...prev,
+                        currentHealth: prev.currentHealth // Pass current health
+                    });
+                    const isAlive = updatedHero.takeDamage(action.damage);
+                    
+                    if (!isAlive) {
+                        setIsBattleOver(true);
+                        setWinner(opponentHero?.name || "Enemy");
+                        return updatedHero;
+                    } else {
+                        setCurrentTurn("Hero");
+                        setIsMyTurn(true);
+                    }
+        
+                    return updatedHero;
+                });
+            }
         });
 
         socketService.onReceiveHeroInfo((receivedHero) => {
-            setOpponentHero(new HeroStats(receivedHero));
+            setOpponentHero(new HeroStats({
+                ...receivedHero,
+                currentHealth: receivedHero.currentHealth // Pass current health
+            }));
         });
 
-        socketService.on("update_game", ({ action }) => {
-            setBattleLog((prev) => [...prev, action.log]);
-            setCurrentTurn(action.nextTurn || "Hero");
-        });
+        // socketService.on("update_game", ({ action }) => {
+        //     setBattleLog((prev) => [...prev, action.log]);
+        //     setCurrentTurn(action.nextTurn || "Hero");
+        // });
 
         socketService.on("player_disconnected", () => {
             setBattleLog((prev) => [...prev, "Opponent disconnected. You win!"]);
@@ -96,30 +110,38 @@ const OnlineBattle: React.FC = () => {
     }, [hero, room, navigate]);
 
     const handleHeroAttack = (skill: Skill) => {
-        if (!isMyTurn || !reconstructedHero || !opponentHero) return;
-
-        // Calculate damage based on the skill and hero's current power
-        const damage = Math.max(0, Math.floor(reconstructedHero.currentPower * 0.5));
+        if (!isMyTurn || !reconstructedHero || !opponentHero || isBattleOver) return;
+    
+        // Calculate damage
+        const damage = Battle.calculateOnlineDamage(reconstructedHero, skill);
+        
+        // Update opponent's health locally
+        const updatedOpponent = new HeroStats({
+            ...opponentHero,
+            currentHealth: opponentHero.currentHealth // Pass current health
+        });
+        const isOpponentAlive = updatedOpponent.takeDamage(damage);
+        setOpponentHero(updatedOpponent);
         
         const action = {
             type: 'attack',
             log: `${reconstructedHero.name} used ${skill.skillName} for ${damage} damage!`,
             damage,
-            skillName: skill.skillName
+            skillName: skill.skillName,
+            attackerHealth: reconstructedHero.currentHealth,
+            defenderHealth: updatedOpponent.currentHealth
         };
-
+    
         // Send action to opponent
         socketService.sendGameAction(room, action);
-
-        // Update local battle log and switch turn
         setBattleLog((prev) => [...prev, action.log]);
-        setCurrentTurn("Enemy");
-        setIsMyTurn(false);
-
-        // Optionally, check if opponent is defeated
-        if (!opponentHero.takeDamage(damage)) {
+    
+        if (!isOpponentAlive) {
             setIsBattleOver(true);
             setWinner(reconstructedHero.name);
+        } else {
+            setCurrentTurn("Enemy");
+            setIsMyTurn(false);
         }
     };
 
