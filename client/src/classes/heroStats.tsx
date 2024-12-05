@@ -123,7 +123,7 @@ export class HeroStats {
 
     takeDamage(damage: number): boolean {
         this.currentHealth -= damage;
-    
+        this.currentHealth = Math.floor(this.currentHealth);
         if (this.currentHealth <= 0) {
             this.currentHealth = 0; 
             return false;

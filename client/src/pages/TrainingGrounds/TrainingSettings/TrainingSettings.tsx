@@ -35,7 +35,7 @@ const TrainingSettings = () => {
 
       {!playerHero && 
       <>
-      <button onClick={() => navigate('/')} className="back-to-menu-bttn">Back to Main Menu</button>
+      <button onClick={() => navigate('/dashboard')} className="back-menu-bttn">Back to Main Menu</button>
       <PlayerSettings handleHero={handleSelectHero}/>
       </>}
       
@@ -46,7 +46,7 @@ const TrainingSettings = () => {
             <button onClick={() => {
               setPlayerHero(null) 
               setOpponentHero(null)
-            }}>Back</button>
+            }} className="back-bttn">Back</button>
           </div>
           
         </>
