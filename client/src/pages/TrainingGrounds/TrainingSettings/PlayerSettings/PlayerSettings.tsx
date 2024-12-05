@@ -18,7 +18,7 @@ const PlayerSettings = ({handleHero} : Props) => {
     <>
       
       <div className="player-settings-container">
-        <h1>Choose your robot</h1>
+        <h1 className=".title-player">Choose your robot</h1>
         <div className="heroes-grid">
             {heroes.map((hero) => (
               <div onClick={()=>handleHero(hero)}>

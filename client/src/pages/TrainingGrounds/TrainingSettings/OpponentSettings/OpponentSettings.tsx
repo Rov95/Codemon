@@ -18,7 +18,7 @@ const OpponentSettings = ({handleEnemy} : Props) => {
   return (
     <>
       <div className='opponent-settings-container'>
-        <h1>Choose your opponent</h1>
+        <h1 className='title-opponent'>Choose your opponent</h1>
         <div className="heroes-grid">
             {enemies.map((enemy) => (
             <div onClick={()=>handleEnemy(enemy)}>

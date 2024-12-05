@@ -90,6 +90,8 @@
     align-self: flex-start;
     background-color: #c39d05;
     margin: 24px 32px;
+    height: 40px;
+    padding: 4px 8px;
 }
 
 

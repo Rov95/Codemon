@@ -1,4 +1,4 @@
-h1 {
+.title-player {
   background: #131352b4;
   width: fit-content;
   padding: 8px 12px;
@@ -9,10 +9,29 @@ h1 {
 .player-settings-container {
   display: flex;
   flex-direction: column;
+  width: 100%;
   padding: 24px 32px;
 }
 
-.back-to-menu-bttn {
-  width: fit-content;
-  background: #131352;
+.back-menu-bttn {
+  
+  background-color: #131352;;
+  font-weight: bold;
+  font-size: 16px;
+  border-width: 0;
+  border-radius: 4px;
+  padding: 4px 8px;
+  height: 40px;
+}
+
+.back-menu-bttn:hover {
+  
+  background-color: #02020a;;
+}
+
+.heroes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 10px;
 }

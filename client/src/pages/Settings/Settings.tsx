@@ -6,9 +6,11 @@ import './Settings.css'
 const Settings = () => {
 
   const navigate = useNavigate();
+
+
   return (
     <div className='settings-container'>
-      <button onClick={()=>navigate("/")}>Back to main menu</button>
+      <button className='back-menu-bttn' onClick={()=>navigate("/dashboard")}>Back to main menu</button>
       <div className='info-player'>
         <h2>Player Info</h2>
         <div className='info'>
