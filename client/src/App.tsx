@@ -1,26 +1,29 @@
-import React
-// { useState, useEffect } 
-from 'react';
-// import Welcome from './pages/Auth/Welcome/Welcome';
+import React, { useState, useEffect } from 'react';
+import Welcome from './pages/Auth/Welcome/Welcome';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import MainMenu from './pages/main-menu/MainMenu';
 import HeroesGallery from './pages/HeroesGallery/heroesGallery';
 import BattleComponent from './pages/Battle/battle';
 import './App.css';
+<<<<<<< HEAD
 import Settings from './pages/Settings/Settings';
+=======
+import TrainingGrounds from './pages/TrainingGrounds/TrainingGrounds';
+import TrainingBattleComponent from './pages/TrainingBattle/TrainingBattle';
+>>>>>>> training-component
 
 const App: React.FC = () => {
-  // const [isSignedIn, setIsSignedIn] = useState<boolean>(() => {
-  //   return JSON.parse(localStorage.getItem('isSignedIn') || 'false');
-  // });
+  const [isSignedIn, setIsSignedIn] = useState<boolean>(() => {
+    return JSON.parse(localStorage.getItem('isSignedIn') || 'false');
+  });
 
-  // useEffect(() => {
-  //   localStorage.setItem('isSignedIn', JSON.stringify(isSignedIn));
-  // }, [isSignedIn]);
+  useEffect(() => {
+    localStorage.setItem('isSignedIn', JSON.stringify(isSignedIn));
+  }, [isSignedIn]);
 
-  // const PrivateRoute: React.FC<{ children: JSX.Element }> = ({ children }) => {
-  //   return isSignedIn ? children : <Navigate to="/" />;
-  // };
+  const PrivateRoute: React.FC<{ children: JSX.Element }> = ({ children }) => {
+    return isSignedIn ? children : <Navigate to="/" />;
+  };
 
   return (
     <Router>
@@ -35,7 +38,7 @@ const App: React.FC = () => {
           element={
               // <PrivateRoute>
                   <MainMenu />
-              /* </PrivateRoute> */
+              // </PrivateRoute> 
           }
         />
         <Route
@@ -43,7 +46,7 @@ const App: React.FC = () => {
           element={
             // <PrivateRoute>
               <HeroesGallery />
-            /* </PrivateRoute> */
+            // </PrivateRoute> 
           }
         />
         <Route
@@ -51,15 +54,23 @@ const App: React.FC = () => {
           element={
             // <PrivateRoute>
               <div>Battle Arena Page Coming Soon!</div> 
-            /* </PrivateRoute> */
+            // </PrivateRoute>
           }
         />
         <Route
           path="/training-grounds"
           element={
             // <PrivateRoute>
-              <div>Training-grounds Page Coming Soon!</div> 
-            /* </PrivateRoute> */
+              <TrainingGrounds/> 
+            // </PrivateRoute>
+          }
+        />
+        <Route
+          path="/training-battle"
+          element={
+            // <PrivateRoute>
+              <TrainingBattleComponent/> 
+            // </PrivateRoute>
           }
         />
         <Route

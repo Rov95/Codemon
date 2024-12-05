@@ -9,6 +9,8 @@ import BattleLog from "./BattleLog/battleLog";
 import BattleActions from "./BattleActions/battleActions";
 import "./styles.css";
 
+
+
 const BattleComponent: React.FC = () => {
     const location = useLocation();
     const navigate = useNavigate();

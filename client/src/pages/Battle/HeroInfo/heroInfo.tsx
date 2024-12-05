@@ -7,7 +7,7 @@ const HeroInfo: React.FC<{
 }> = ({ hero, getHealthBarColor }) => (
     <div className="character-info hero-info">
         <p className="character-name">{hero.name}</p>
-        <div className="health-bar">
+        {/* <div className="health-bar">
             <div
                 className="health-bar-fill"
                 style={{
@@ -15,7 +15,7 @@ const HeroInfo: React.FC<{
                     backgroundColor: getHealthBarColor(hero.currentHealth, hero.maxHealth),
                 }}
             ></div>
-        </div>
+        </div> */}
         <p>
             {hero.currentHealth} / {hero.maxHealth} HP
         </p>
