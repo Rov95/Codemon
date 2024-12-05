@@ -103,7 +103,7 @@ const BattleComponent: React.FC = () => {
         <div className="battle-container">
             <div className="character-images">
                 <div className="hero-container">
-                    <HeroInfo hero={hero} getHealthBarColor={getHealthBarColor} />
+                    <HeroInfo hero={hero} /*getHealthBarColor={getHealthBarColor}*/ />
                     <img
                         src={hero.image}
                         alt="Hero"

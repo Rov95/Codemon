@@ -1,0 +1,92 @@
+.battle-container {
+    background: url('../../../assets/BattleRing.svg') no-repeat center center fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+    position: relative;
+}
+
+.battle-screen {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.character-images {
+    position: absolute;
+    top: 30%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: space-around;
+    width: 60%; 
+    z-index: 5; 
+}
+
+.hero-container, .enemy-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px; 
+}
+
+.character-image {
+    width: 150px;
+    height: 200px;
+    z-index: 10; 
+}
+
+.health-bar {
+    /* position: absolute; */
+    bottom: -15px;
+    width: 100%;
+    height: 12px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    background-color: #4caf50;
+}
+
+.battle-log {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    overflow-y: auto;
+    padding: 10px;
+    z-index: 5;
+}
+
+.actions {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.action-button,
+.return-button {
+    width: 120px;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #ffcc00;
+    border: 2px solid #000;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.shake {
+    animation: shake-animation 0.5s;
+}
+
+@keyframes shake-animation {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    50% { transform: translateX(10px); }
+    75% { transform: translateX(-10px); }
+}
