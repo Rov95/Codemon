@@ -93,11 +93,6 @@ const OnlineBattle: React.FC = () => {
             }));
         });
 
-        // socketService.on("update_game", ({ action }) => {
-        //     setBattleLog((prev) => [...prev, action.log]);
-        //     setCurrentTurn(action.nextTurn || "Hero");
-        // });
-
         socketService.on("player_disconnected", () => {
             setBattleLog((prev) => [...prev, "Opponent disconnected. You win!"]);
             setWinner(reconstructedHero?.name || "Hero");

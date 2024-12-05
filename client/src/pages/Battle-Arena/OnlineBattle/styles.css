@@ -1,5 +1,5 @@
 .battle-container {
-    background: url('../../../assets/trainingG.svg') no-repeat center center fixed;
+    background: url('../../../assets/BattleRing.svg') no-repeat center center fixed;
     display: flex;
     flex-direction: column;
     align-items: center;
