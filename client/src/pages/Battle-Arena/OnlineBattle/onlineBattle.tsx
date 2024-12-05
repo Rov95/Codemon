@@ -46,7 +46,7 @@ const OnlineBattle: React.FC = () => {
             return;
         }
 
-        socketService.connect("http://localhost:3000");
+        socketService.connect("https://bd76-181-32-12-10.ngrok-free.app");
         socketService.emit("join_match", { room });
 
         socketService.on("match_ready", () => {

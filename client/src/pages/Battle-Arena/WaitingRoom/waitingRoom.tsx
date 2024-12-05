@@ -20,7 +20,7 @@ const WaitingRoom: React.FC<WaitingRoomProps> = () => {
             return;
         }
 
-        socketService.connect("http://localhost:3000");
+        socketService.connect("https://bd76-181-32-12-10.ngrok-free.app");
 
         socketService.on("match_ready", ({ room }) => {
             setStatusMessage("Match found! Redirecting...");
