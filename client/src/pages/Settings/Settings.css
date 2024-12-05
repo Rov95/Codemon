@@ -1,0 +1,27 @@
+.settings-container {
+  background: url('../../assets/settings.svg') no-repeat center center fixed;
+  background-color: black;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 24px;
+  overflow: hidden; 
+  position: relative;
+
+  button {
+    align-self: flex-start;
+    margin-left: 32px;
+  }
+}
+
+
+.player-info {
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.646);
+  width: 640px;
+  height: 760px;
+}

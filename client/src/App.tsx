@@ -7,6 +7,7 @@ import MainMenu from './pages/main-menu/MainMenu';
 import HeroesGallery from './pages/HeroesGallery/heroesGallery';
 import BattleComponent from './pages/Battle/battle';
 import './App.css';
+import Settings from './pages/Settings/Settings';
 
 const App: React.FC = () => {
   // const [isSignedIn, setIsSignedIn] = useState<boolean>(() => {
@@ -65,7 +66,7 @@ const App: React.FC = () => {
           path="/settings"
           element={
             // <PrivateRoute>
-              <div>Settings Page Coming Soon!</div> 
+              <Settings/>
             /* </PrivateRoute> */
           }
         />
