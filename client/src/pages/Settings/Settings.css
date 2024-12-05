@@ -19,9 +19,38 @@
 }
 
 
-.player-info {
+.info-player {
   border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.646);
+  background-color: rgba(0, 0, 0, 0.793);
   width: 640px;
   height: 760px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 20px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  height: fit-content;
+  row-gap: 0px;
+  p {
+    width: 180px;
+    text-align: start;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+  }
+}
+
+.label {
+  color: rgba(245, 245, 245, 0.667);
+  font-size: 14px;
+}
+
+.content {
+  color: whitesmoke;
+  font-size: 16px;
+  font-weight: 600;
 }
