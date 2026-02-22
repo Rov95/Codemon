@@ -1,4 +1,4 @@
-const API_URL = 'https://85f1-181-32-12-10.ngrok-free.app/users';
+const API_URL = 'http://127.0.0.1:3000/users';
 
 interface SignUpData {
     email: string;
